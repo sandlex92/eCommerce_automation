@@ -25,8 +25,9 @@ class Test_001_Login:
         self.driver = setup
         self.driver.get(self.baseURL)
         self.lp = LoginPage(self.driver)
-        wait = WebDriverWait(self.driver, 10)
-        wait.until((EC.element_to_be_clickable(By.XPATH,"//a[@id='login2']"))).click()
+        wait = WebDriverWait(setup, 20)
+        #wait.until((EC.element_to_be_clickable(By.XPATH,"//label[@name='//body[1]/nav[1]/div[1]']")))
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//label[@name='//body[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]']"))).click()
 
         #sleep(10)
         #self.lp.clickLogin1()
