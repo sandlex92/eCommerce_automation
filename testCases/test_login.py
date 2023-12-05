@@ -23,23 +23,13 @@ class Test_001_Login:
 
     def test_login(self,setup):
         self.driver = setup
+        self.driver.maximize_window()
         self.driver.get(self.baseURL)
         self.lp = LoginPage(self.driver)
-        wait = WebDriverWait(setup, 20)
-        #wait.until((EC.element_to_be_clickable(By.XPATH,"//label[@name='//body[1]/nav[1]/div[1]']")))
-        wait.until(EC.element_to_be_clickable((By.XPATH,"//label[@name='//body[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]']"))).click()
-
-        #sleep(10)
-        #self.lp.clickLogin1()
-        # main_page = self.driver.current_window_handle
-        # sleep(5)
-        # self.lp = LoginPage(self.driver)
-        # sleep(5)
-        # self.lp.clickLogin1()
-        # for handle in self.driver.window_handles:
-        #     if handle != main_page:
-        #         login_page = handle
-        # self.driver.switch_to.window(login_page)
+        main_page = setup.current_window_handle
+        sleep(5)
+        setup.find_element(By.XPATH,"//body[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]").click()
+        sleep(5)
         self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
         self.lp.clickLogin2()
